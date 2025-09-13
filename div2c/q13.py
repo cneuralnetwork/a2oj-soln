@@ -1,5 +1,5 @@
 import sys
-from collections import deque
+from collections import deque,defaultdict
 
 def inp():
     return int(sys.stdin.readline())
@@ -10,14 +10,14 @@ def insr():
     return list(s[:len(s) - 1])
 def invr():
     return map(int, sys.stdin.readline().split())
+def invr_str():
+    return sys.stdin.readline().split()
 
 t = 1
 for _ in range(t):
-    s=input()
-    bs=s.split('b')
-    ans=1
-    for i in bs:
-        ai=i.count('a')
-        ans=(ans*(1+ai))%1000000007
-    ans=(ans-1)%1000000007
-    print(ans)
+    n=inp()
+    book=defaultdict(set)
+    for i in range(n):
+        parts=invr_str()
+        book[parts[0]].add(parts[2:])
+    
